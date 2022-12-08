@@ -14,11 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [\App\Http\Controllers\PrincipalController::class, 'index']);
-Route::get('/login', [\App\Http\Controllers\PrincipalController::class, 'login']);
-Route::post('/login', 'PrincipalController@login')->name('site.login');
-Route::get('/seec', [\App\Http\Controllers\PrincipalController::class, 'seec']);
-Route::get('/eventos', [\App\Http\Controllers\PrincipalController::class, 'eventos']);
-Route::get('/contato', [\App\Http\Controllers\ContatoController::class, 'contato']);
-Route::post('/contato', 'ContatoController@contato')->name('site.contato');
+
+Route::prefix('/cursos')->group(function () {
+    Route::get('/painel', [\App\Http\Controllers\CursosController::class, 'painel']);
+    Route::get('/curso', [\App\Http\Controllers\CursosController::class, 'curso']);
+    Route::get('/aula', [\App\Http\Controllers\CursosController::class, 'aula']);
+});
 Route::get('/itq', [\App\Http\Controllers\PrincipalController::class, 'itq']);
 Route::get('/postulantes', [\App\Http\Controllers\PrincipalController::class, 'postulantes']);
+Route::get('/seec', [\App\Http\Controllers\PrincipalController::class, 'seec']);
+Route::get('/eventos', [\App\Http\Controllers\EventosController::class, 'eventos']);
+Route::get('/contato', [\App\Http\Controllers\ContatoController::class, 'contato']);
+Route::post('/contato', 'ContatoController@contato')->name('site.contato');
+Route::get('/login', [\App\Http\Controllers\LoginController::class, 'login']);
+Route::post('/login', 'LoginController@login')->name('site.login');

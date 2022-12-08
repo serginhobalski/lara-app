@@ -14,23 +14,6 @@ class PrincipalController extends Controller
         return view('site.principal', $data);
     }
 
-    public function login()
-    {
-        $data = [
-            'titulo' => 'Login',
-            'subtitulo' => 'Faça seu login!',
-        ];
-        return view('site.login', $data);
-    }
-
-    public function eventos()
-    {
-        $data = [
-            'titulo' => 'Eventos',
-            'subtitulo' => 'Fique por dentro dos nossos eventos!',
-        ];
-        return view('site.eventos', $data);
-    }
 
     public function seec()
     {
@@ -41,14 +24,6 @@ class PrincipalController extends Controller
         return view('site.seec', $data);
     }
 
-    public function contato()
-    {
-        $data = [
-            'titulo' => 'Contato',
-            'subtitulo' => 'Como podemos ajudar?',
-        ];
-        return view('site.contato', $data);
-    }
 
     public function itq()
     {
@@ -58,6 +33,7 @@ class PrincipalController extends Controller
         ];
         return view('site.itq', $data);
     }
+
 
     public function postulantes()
     {
