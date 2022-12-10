@@ -15,10 +15,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\PrincipalController::class, 'index']);
 
+Route::prefix('/home')->group(function () {
+    Route::get('/', [\App\Http\Controllers\PrincipalController::class, 'index']);
+});
+Route::prefix('/app')->group(function () {
+    Route::get('/', [\App\Http\Controllers\AppController::class, 'index']);
+});
+Route::prefix('/mensagens')->group(function () {
+    Route::get('/', [\App\Http\Controllers\MensagensController::class, 'index']);
+    Route::get('/enviadas', [\App\Http\Controllers\MensagensController::class, 'enviadas']);
+    Route::get('/lixeira', [\App\Http\Controllers\MensagensController::class, 'lixeira']);
+    Route::get('/criar', [\App\Http\Controllers\MensagensController::class, 'criar']);
+    Route::get('/exibir', [\App\Http\Controllers\MensagensController::class, 'exibir']);
+});
 Route::prefix('/cursos')->group(function () {
-    Route::get('/painel', [\App\Http\Controllers\CursosController::class, 'painel']);
-    Route::get('/curso', [\App\Http\Controllers\CursosController::class, 'curso']);
-    Route::get('/aula', [\App\Http\Controllers\CursosController::class, 'aula']);
+    Route::get('/', [\App\Http\Controllers\CursosController::class, 'index']);
 });
 Route::get('/itq', [\App\Http\Controllers\PrincipalController::class, 'itq']);
 Route::get('/postulantes', [\App\Http\Controllers\PrincipalController::class, 'postulantes']);
